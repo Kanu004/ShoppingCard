@@ -21,7 +21,22 @@ export const ShopcontextProvider = (props) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}));
     };
 
-    const contextValue={cartItems,addToCart,removeFromCart};
+    const updateCartItemCount  = (newAmount , itemId)=> {
+        setCartItems((prev)=> ({...prev,[itemId]:newAmount}));
+    };
+
+    const getTotalCartAmount = ()=> {
+        let TotalAmount =0;
+        for(const item in cartItems){
+            if(cartItems[item]>0){
+                let itemInfo = PRODUCTS.find((product)=> product.id === Number(item));
+                TotalAmount +=cartItems[item]* itemInfo.price
+            }
+        }
+        return TotalAmount;
+    };
+
+    const contextValue={cartItems,addToCart,removeFromCart,updateCartItemCount,getTotalCartAmount};
     
     console.log(cartItems);
 
