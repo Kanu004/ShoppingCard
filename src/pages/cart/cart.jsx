@@ -4,7 +4,7 @@ import { useContext } from "react";
 import "./cart.css";
 import { Cartitem } from "./cartitem";
 import { useNavigate } from "react-router-dom";
-//import { Checkout } from "../../checkout";
+import { Checkout } from "../../checkout";
 
 export  const Cart = () => {
   const { cartItems,getTotalCartAmount} = useContext(ShopContext);
@@ -32,7 +32,7 @@ export  const Cart = () => {
       :<h1> Your cart is empty </h1>}
        <div className="checkout">
        <button onClick={()=>navigate("/")}>Continue Shopping</button>
-        <button onClick={()=>navigate("../../checkout")}>Checkout</button>
+        <button onClick={()=>navigate("/checkout")}>Checkout</button>
         </div>
     </div>
   );
